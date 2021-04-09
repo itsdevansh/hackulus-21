@@ -1,10 +1,3 @@
-'''
-PyPower Projects
-Emotion Detection Using AI
-'''
-
-#USAGE : python test.py
-
 from keras.models import load_model
 from time import sleep
 from keras.preprocessing.image import img_to_array
@@ -52,6 +45,19 @@ while True:
             preds = classifier.predict(roi)[0]
             print("\nprediction = ",preds)
             label=class_labels[preds.argmax()]
+            h=n=s=su=a=0
+            def function():
+                for i in range(0,5):
+                    if(label=="happy"):
+                        h=h+1
+                    elif(label=="neutral"):
+                        n=n+1
+                    elif(label=="sad"):
+                        s=s+1
+                    elif(label=="surprised"):
+                        su=su+1
+                    else:
+                        a=a+1
             print("\nprediction max = ",preds.argmax())
             print("\nlabel = ",label)
             label_position = (x,y)
@@ -67,21 +73,7 @@ while True:
     ####################
 
     e =["happy","neutral","sad","surprised","angry"]
-    h=n=s=su=a=0
-
-    def function():
-        for i in range(0,n):
-            if(label=="happy"):
-                h=h+1
-            elif(label=="neutral"):
-                n=n+1
-            elif(label=="sad"):
-                s=s+1
-            elif(label=="surprised"):
-                su=su+1
-            else:
-                a=a+1
-    
+   
     f = [h,n,s,su,a]
     def sort():
         i=0
@@ -96,8 +88,8 @@ while True:
                     e[i+1]=temp
                 i=i+1
     
-    ratio=f[4]/f[3]
-    result=round(20/(1+ratio))
+    # ratio=f[4]/f[3]
+    # result=round(20/(1+ratio))
 
 
 
@@ -107,7 +99,7 @@ while True:
     def open_spotify(url):
         webbrowser.open(url, new = 2)
     def create_label(text):
-        return tk.Label(master = frm_recommendations, text = "Happy Sad")
+        return tk.Label(master = frm_recommendations, text = text)
     def create_button(text, url):
         return tk.Button(master = frm_recommendations, text = text, command = lambda : open_spotify(url))
     def clear(*args):
@@ -141,7 +133,7 @@ frm_recommendations = tk.Frame(master = window)
 frm_search_field.pack()
 frm_recommendations.pack()
 ent_search = tk.Entry(master = frm_search_field, width = 25)
-ent_search.insert(0, f[4]+f[3])
+ent_search.insert(0, e[4])
 btn_get_recommendations = tk.Button(master = frm_search_field, text = 'Get recommendations', command = get_recommendation ) 
 btn_get_recommendations.invoke()
 ent_search.grid(row = 0,column = 0,pady =  30,padx = 30)
