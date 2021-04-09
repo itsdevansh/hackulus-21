@@ -47,14 +47,16 @@ while True:
             label=class_labels[preds.argmax()]
            
             for i in range(0,5):
-                if(label=="happy"):
+                if(label=="Happy"):
                     h=h+1
-                elif(label=="neutral"):
+                elif(label=="Neutral"):
                     n=n+1
-                elif(label=="sad"):
+                elif(label=="Sad"):
                     s=s+1
-                elif(label=="surprised"):
+                elif(label=="Surprised"):
                     su=su+1
+                elif(label=="Angry"):
+                    a=a+1
                 else:
                     a=a+1
             
@@ -72,7 +74,7 @@ while True:
 
     ####################
 
-    e =["happy","neutral","sad","surprised","angry"]
+    
    
    
     f = [h,n,s,su,a]
@@ -83,9 +85,9 @@ while True:
                     temp=f[i]
                     f[i]=f[i+1]
                     f[i+1]=temp
-                    temp1=e[i]
-                    e[i]=e[i+1]
-                    e[i+1]=temp
+                    temp1=class_labels[i]
+                    class_labels[i]=class_labels[i+1]
+                    class_labels[i+1]=temp
                 i=i+1
     
     # ratio=f[4]/f[3]
