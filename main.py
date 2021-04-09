@@ -20,7 +20,7 @@ class_labels = ['Angry','Happy','Neutral','Sad','Surprise']
 
 cap = cv2.VideoCapture(0)
 
-
+h=n=s=su=a=0
 
 while True:
     # Grab a single frame of video
@@ -45,19 +45,19 @@ while True:
             preds = classifier.predict(roi)[0]
             print("\nprediction = ",preds)
             label=class_labels[preds.argmax()]
-            h=n=s=su=a=0
-            def function():
-                for i in range(0,5):
-                    if(label=="happy"):
-                        h=h+1
-                    elif(label=="neutral"):
-                        n=n+1
-                    elif(label=="sad"):
-                        s=s+1
-                    elif(label=="surprised"):
-                        su=su+1
-                    else:
-                        a=a+1
+           
+            for i in range(0,5):
+                if(label=="happy"):
+                    h=h+1
+                elif(label=="neutral"):
+                    n=n+1
+                elif(label=="sad"):
+                    s=s+1
+                elif(label=="surprised"):
+                    su=su+1
+                else:
+                    a=a+1
+            
             print("\nprediction max = ",preds.argmax())
             print("\nlabel = ",label)
             label_position = (x,y)
@@ -74,10 +74,10 @@ while True:
 
     e =["happy","neutral","sad","surprised","angry"]
    
+   
     f = [h,n,s,su,a]
-    def sort():
-        i=0
-        for j in range(0,5):
+    i=0
+    for j in range(0,5):
             while(i<4):
                 if(f[i]>f[i+1]):
                     temp=f[i]
