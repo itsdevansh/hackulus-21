@@ -55,8 +55,6 @@ while True:
                     s=s+1
                 elif(label=="Surprised"):
                     su=su+1
-                elif(label=="Angry"):
-                    a=a+1
                 else:
                     a=a+1
             
@@ -76,7 +74,7 @@ while True:
 
     
    
-   
+    e = ['Angry','Happy','Neutral','Sad','Surprise']
     f = [h,n,s,su,a]
     i=0
     for j in range(0,5):
@@ -85,9 +83,9 @@ while True:
                     temp=f[i]
                     f[i]=f[i+1]
                     f[i+1]=temp
-                    temp1=class_labels[i]
-                    class_labels[i]=class_labels[i+1]
-                    class_labels[i+1]=temp
+                    temp1=e[i]
+                    e[i]=e[i+1]
+                    e[i+1]=temp
                 i=i+1
     
     # ratio=f[4]/f[3]
