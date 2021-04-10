@@ -75,7 +75,8 @@ while True:
             preds = classifier.predict(roi)[0]
             print("\nprediction = ",preds)
             label=class_labels[preds.argmax()]
-            
+            print("\nprediction max = ",preds.argmax())
+            print("\nlabel = ",label)
             if(label=="Happy"):
                 window = tk.Tk()
                 frm_search_field  = tk.Frame(master = window, width = 100)
@@ -142,8 +143,7 @@ while True:
                 btn_get_recommendations.grid(row = 0 , column =1, pady = 30, padx = 30)
                 window.mainloop()
 
-            print("\nprediction max = ",preds.argmax())
-            print("\nlabel = ",label)
+           
             label_position = (x,y)
             cv2.putText(frame,label,label_position,cv2.FONT_HERSHEY_SIMPLEX,2,(0,255,0),3)
         else:
@@ -154,18 +154,6 @@ while True:
     
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-
-
-    ####################
-
-
-    # ratio=f[4]/f[3]
-    # result=round(20/(1+ratio))
-
-
-
-    ####################
-
 
 
 cap.release()
